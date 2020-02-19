@@ -30,6 +30,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using SocketIO;
+using Random = UnityEngine.Random;
 
 public class TestSocketIO : MonoBehaviour
 {
@@ -46,12 +47,27 @@ public class TestSocketIO : MonoBehaviour
 	public void Connect()
 	{
 		socket.Connect();
-
 	}
+	[Serializable]
+	public class UserInfo
+	{
+		public string userId;
+		public int elo;
+	}
+	UserInfo userInfo=new UserInfo();
 
+	public void SendUserInfo()
+	{	
+		userInfo.userId=LobbyManager.Instance().GetUserId();
+		userInfo.elo=Random.Range(0, 100);
+			//Unity <-> node.js 통신하려면 데이터 타입이 무조건 JSONObejct여야 하는 듯. 코드 개같다. 정말로.
+		socket.Emit("UpdateUserInfo",	new JSONObject(JsonUtility.ToJson(userInfo)));
+	}
+	
 	private void NoticeConnected(SocketIOEvent e)
 	{
 		Debug.Log("node js server connected success!"+e.name);
+		SendUserInfo();
 	}
 
 	private void Matching(SocketIOEvent e)
