@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\paperfrog\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\paperfrog\.Rider2019.2\system\resharper-host\Temp\ReSharper.Db.2020-02-19_19-50-55.018" t="ExcludeRecursive" />
-    <e p="C:\Users\paperfrog\Documents\Gits\Capstone-study\paperfrog\CapstoneStudy" t="IncludeRecursive">
+    <e p="C:\Users\paper\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\paper\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_CapstoneStudy - 복사본.1183265038.00" t="ExcludeRecursive" />
+    <e p="E:\Capstone-study\paperfrog\CapstoneStudy - 복사본" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -115,7 +115,7 @@
           </e>
         </e>
       </e>
-      <e p="CapstoneStudy.sln" t="IncludeFlat" />
+      <e p="CapstoneStudy - 복사본.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />

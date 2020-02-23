@@ -42,18 +42,14 @@ public class TestSocketIO : MonoBehaviour
 		socket=go.GetComponent<SocketIOComponent>();
 		socket.On("matching",Matching);
 		socket.On("NoticeConnected",NoticeConnected);
+		socket.On("FoundUser",FoundUser);
 	}
 
 	public void Connect()
 	{
 		socket.Connect();
 	}
-	[Serializable]
-	public class UserInfo
-	{
-		public string userId;
-		public int elo;
-	}
+	
 	UserInfo userInfo=new UserInfo();
 
 	public void SendUserInfo()
@@ -69,6 +65,12 @@ public class TestSocketIO : MonoBehaviour
 		Debug.Log("node js server connected success!"+e.name);
 		SendUserInfo();
 	}
+
+	private void FoundUser(SocketIOEvent e)
+	{
+		LobbyManager.Instance().OpenMatchingPanel(e.data);
+	}
+
 
 	private void Matching(SocketIOEvent e)
 	{

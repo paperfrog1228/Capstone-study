@@ -4,13 +4,6 @@
     <list default="true" id="e2b4fafc-0ab1-4723-a0d3-7f8691cad9ba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.TextMeshPro.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.Timeline.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.Timeline.Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.Timeline.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/ScriptAssemblies/Unity.Timeline.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/StateCache/Hierarchy/9d5306-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/StateCache/Hierarchy/9d5306-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/StateCache/SceneView/311279-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/StateCache/SceneView/311279-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../CapstoneStudy/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/../../CapstoneStudy/Library/assetDatabase3" afterDir="false" />
@@ -63,7 +56,7 @@
       <updated>1581874984434</updated>
       <workItem from="1581874986197" duration="1027000" />
       <workItem from="1581939120673" duration="4736000" />
-      <workItem from="1582108325542" duration="3356000" />
+      <workItem from="1582108325542" duration="7275000" />
     </task>
     <servers />
   </component>
@@ -87,9 +80,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="828" y="203" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1582108585469" />
-    <state x="833" y="233" key="search.everywhere.popup" timestamp="1582108338161">
+    <state x="833" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1582116298497">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="833" y="233" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582108338161" />
+    <state x="833" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582116298497" />
   </component>
 </project>
