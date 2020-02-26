@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\paperfrog\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\paperfrog\.Rider2019.2\system\resharper-host\Temp\ReSharper.Db.2020-02-19_19-50-55.018" t="ExcludeRecursive" />
-    <e p="C:\Users\paperfrog\Documents\Gits\Capstone-study\paperfrog\CapstoneStudy" t="IncludeRecursive">
+    <e p="C:\Users\paper\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\paper\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_CapstoneStudy.-1503796833.00" t="ExcludeRecursive" />
+    <e p="C:\Users\paper\Documents\Gits\Capstone-study\paperfrog\CapstoneStudy" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Script" t="Include">
           <e p="LobbyManager.cs" t="Include" />
+          <e p="TcpSocketManager.cs" t="Include" />
         </e>
         <e p="SocketIO" t="Include">
           <e p="JSONObject" t="Include">

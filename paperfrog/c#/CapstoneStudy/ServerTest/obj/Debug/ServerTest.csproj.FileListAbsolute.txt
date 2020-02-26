@@ -1,0 +1,5 @@
+C:\Users\paper\Documents\Gits\Capstone-study\paperfrog\c#\CapstoneStudy\ServerTest\bin\Debug\ServerTest.exe
+C:\Users\paper\Documents\Gits\Capstone-study\paperfrog\c#\CapstoneStudy\ServerTest\bin\Debug\ServerTest.pdb
+C:\Users\paper\Documents\Gits\Capstone-study\paperfrog\c#\CapstoneStudy\ServerTest\obj\Debug\ServerTest.csprojAssemblyReference.cache
+C:\Users\paper\Documents\Gits\Capstone-study\paperfrog\c#\CapstoneStudy\ServerTest\obj\Debug\ServerTest.exe
+C:\Users\paper\Documents\Gits\Capstone-study\paperfrog\c#\CapstoneStudy\ServerTest\obj\Debug\ServerTest.pdb
