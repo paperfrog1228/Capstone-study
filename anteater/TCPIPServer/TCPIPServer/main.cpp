@@ -2,7 +2,7 @@
 
 int main()
 {
-	IRunnable* server = new TCPIPLiveServer();
+	IRunnable* server = new TCPIPThreadServer();
 	server->run();
 	return 0;
 }

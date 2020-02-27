@@ -17,3 +17,9 @@ class TCPIPLiveServer : public IRunnable
 public:
 	int run();
 };
+
+class TCPIPThreadServer : public IRunnable
+{
+public:
+	int run();
+};
