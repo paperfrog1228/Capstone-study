@@ -9,14 +9,31 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/ServerTest/SocketAsyncEventArgsPool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/7d/de25ca4f/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ServerTest/CNetworkService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ServerTest/CListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ServerTest/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ServerTest/BufferManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ServerTest/CGameUser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ServerTest/CUserToken.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ServerTest/Defines.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ServerTest/MessageResolver.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/862B9365-843C-4BF1-BA93-210C124BB523/a7/8107c2be/SocketAsyncEventArgs.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ServerTest/Program.cs" />
         <option value="$PROJECT_DIR$/ServerTest/CListener.cs" />
+        <option value="$PROJECT_DIR$/ServerTest/SocketAsyncEventArgsPool.cs" />
+        <option value="$PROJECT_DIR$/ServerTest/Properties/CUserToken.cs" />
+        <option value="$PROJECT_DIR$/ServerTest/BufferManager.cs" />
+        <option value="$PROJECT_DIR$/ServerTest/Defines.cs" />
+        <option value="$PROJECT_DIR$/ServerTest/CUserToken.cs" />
+        <option value="$PROJECT_DIR$/ServerTest/MessageResolver.cs" />
+        <option value="$PROJECT_DIR$/ServerTest/CGameUser.cs" />
+        <option value="$PROJECT_DIR$/ServerTest/Program.cs" />
+        <option value="$PROJECT_DIR$/ServerTest/CNetworkService.cs" />
       </list>
     </option>
   </component>
@@ -59,7 +76,7 @@
       </method>
     </configuration>
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
