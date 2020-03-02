@@ -8,16 +8,23 @@
 #include <WinSock2.h>
 #include <thread> // 스레드 표준 라이브러리. C++ 11에 추가됨.
 #include <vector> // C++ 많이 안만져봐서 이런거 있는지 몰랐어유
+#include <string>
+#include <sstream>
 #include "MyHeader.h"
 
 using std::thread;
 using std::vector;
+using std::string;
 
 #pragma comment(lib, "ws2_32.lib")
 
 #define PORT 8888
 
 void connection_handler(SOCKET* client, int client_id);
+
+string MyProtocol(string recv_msg);
+
+vector<string> split(const string & s, char delimiter);
 
 int TCPIPThreadServer::run()
 {
@@ -29,7 +36,7 @@ int TCPIPThreadServer::run()
 	int c;
 	int client_num = 0;
 	vector<thread> connections;
-	const char * message;
+	string message;
 
 	printf("\n윈솤 초기화...\n");
 
@@ -76,7 +83,7 @@ int TCPIPThreadServer::run()
 	{
 		printf("a new client requested a connection.\n");
 		message = "assigning a handler...\n";
-		send(new_socket, message, strlen(message), 0);
+		send(new_socket, message.c_str(), message.size(), 0);
 
 		hand_socket = (SOCKET *)malloc(sizeof(SOCKET));
 		*hand_socket = new_socket;
@@ -98,28 +105,65 @@ int TCPIPThreadServer::run()
 
 void connection_handler(SOCKET* client, int client_id) {
 	thread::id thread_id = std::this_thread::get_id();
-	const char * message;
-	char response[2000];
+	string send_msg, recv_msg = "";
+	char response[512];
 	int recv_size;
 
 	printf("Connection accepted. thread# %x, client_id#%d\n",thread_id, client_id);
 
-	message = "안녕하세요.\0";
+	send_msg = "Hello I'm your connection handler.\0";
+	send(*client, send_msg.c_str(), send_msg.size(), 0);
 
-	send(*client, message, strlen(message), 0);
-
-	while (recv_size = recv(*client, response, 2000, 0) != SOCKET_ERROR)
+	while ((recv_size = recv(*client, response, 512, 0)) != SOCKET_ERROR)
 	{
-		/*
-			모듈화 후 Cllient <=> Server 간 프로토콜 구현 ...?
-		*/
-		response[recv_size] = '\0';
-		printf("client#%d: %s\n", client_id, response);
+		recv_msg.assign(response);
+		printf("client#%d: %s (%d byte(s))\n", client_id, recv_msg.c_str(), recv_size);
 
-		send(*client, response, recv_size + 1, 0); // echo
+		send_msg = MyProtocol(recv_msg);
+
+		send(*client, send_msg.c_str(), send_msg.size(), 0);
 	}
 
 	closesocket(*client);
 	free(client);
 	printf("client#%d disconnected.\n", client_id);
 }
+
+/*
+클라이언트로부터 받은 메세지를 분석해 보낼 메세지를 생성합니다.
+	recv_msg : 클라이언트로부터 받은 메세지
+	리턴값 : 클라이언트에게 보낼 메세지
+*/
+string MyProtocol(string recv_msg) {
+	vector<string> msg = split(recv_msg, '|');
+
+	if (msg.size() != 2)
+		return "wrong!";
+
+	return "yes!";
+}
+/*
+연습하는거니까 메세지 구조는 대충..
+seperator : |
+structure : msg_type | msg
+*/
+
+/*
+문자열을 특정 문자를 기준으로 분리합니다. Ref : https://www.fluentcpp.com/2017/04/21/how-to-split-a-string-in-c/
+	s : 문자열
+	delimiter : 특정 문자
+*/
+vector<string> split(const string& s, char delimiter) {
+	vector<string> tokens;
+	string token;
+	std::istringstream tokenStream(s);
+	while (std::getline(tokenStream, token, delimiter))
+	{
+		tokens.push_back(token);
+	}
+
+	return tokens;
+}
+/*
+string 표준 라이브러리는 만들어놨으면서 왜 split은 없지?
+*/
