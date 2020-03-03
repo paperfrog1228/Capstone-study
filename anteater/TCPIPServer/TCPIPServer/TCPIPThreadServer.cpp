@@ -73,7 +73,7 @@ int TCPIPThreadServer::run()
 	while ((newSocket = accept(s, (struct sockaddr *)&client, &c)) != INVALID_SOCKET)
 	{
 		printf("a new client requested a connection.\n");
-		message = "assigning a handler ... ";
+		message = "MSG|assigning a handler ... ";
 		send(newSocket, message.c_str(), message.size(), 0);
 
 		handSocket = (SOCKET *)malloc(sizeof(SOCKET));
