@@ -148,10 +148,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="MyHeader.h" />
+    <ClInclude Include="MyProtocol.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyProtocol.cpp" />
     <ClCompile Include="TCPIPLiveServer.cpp" />
     <ClCompile Include="TCPIPServer.cpp" />
     <ClCompile Include="TCPIPThreadServer.cpp" />

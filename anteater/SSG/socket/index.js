@@ -5,11 +5,12 @@
 
 const net = require('net');
 
-const eventListener = require('./events.js');
+const setEventListener = require('./events.js');
 
 let client = {};
+client.msgQueue = [];
 
-client.getConnection = function(connName, port, host) {
+client.getConnection = function(connName, port, host, callback = () => {}) {
     client = net.connect({port: port, host: host}, function() {
         client.connName = connName;
         console.log(`${client.connName} 연결 됨.`);
@@ -19,9 +20,11 @@ client.getConnection = function(connName, port, host) {
         //client.setTimeout(500);
         client.setEncoding('utf8');
 
-        eventListener(client);
+        setEventListener(client);
+        
+        callback();
     });
-}
+};
 
 client.writeData = function(data) {
     const success = client.write(data + '\0');
@@ -43,6 +46,6 @@ client.writeData = function(data) {
        그 함수에 client와 data를 줘서 바로 호출.
        */
    }
-}
+};
 
 module.exports = client;

@@ -1,19 +1,13 @@
-const rl = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-const socket = require('./socket');
+const cui = require('./cui');
 
 const connConfig = {
     port: '8888',
     host: '127.0.0.1'
 }
 
-socket.getConnection('Anteater', connConfig.port, connConfig.host);
+cui.init(connConfig);
 
-rl.on('line', function(line) {
-    socket.writeData(line);
-}).on('close', function() {
-    process.exit();
+process.on('uncaughtException', function(err) {
+    console.log(`예상치 못한 오류가 발생하였습니다. ${err.stack}`);
+    process.exit(1);
 });

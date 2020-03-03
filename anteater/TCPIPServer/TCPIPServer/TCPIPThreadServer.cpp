@@ -6,13 +6,11 @@
 #include <io.h>
 #include <stdio.h>
 #include <WinSock2.h>
-#include <thread> // 스레드 표준 라이브러리. C++ 11에 추가됨.
 #include <vector> // C++ 많이 안만져봐서 이런거 있는지 몰랐어유
 #include <string>
-#include <sstream>
 #include "MyHeader.h"
+#include "MyProtocol.h"
 
-using std::thread;
 using std::vector;
 using std::string;
 
@@ -20,22 +18,15 @@ using std::string;
 
 #define PORT 8888
 
-void connection_handler(SOCKET* client, int client_id);
-
-string MyProtocol(string recv_msg);
-
-vector<string> split(const string & s, char delimiter);
-
 int TCPIPThreadServer::run()
 {
 	printf("Hello World!\n");
 
 	WSADATA wsa;
-	SOCKET s, new_socket, *hand_socket;
+	SOCKET s, newSocket, *handSocket;
 	struct sockaddr_in server, client;
 	int c;
-	int client_num = 0;
-	vector<thread> connections;
+	int clientNum = 0;
 	string message;
 
 	printf("\n윈솤 초기화...\n");
@@ -79,20 +70,19 @@ int TCPIPThreadServer::run()
 
 	c = sizeof(struct sockaddr_in);
 
-	while ((new_socket = accept(s, (struct sockaddr *)&client, &c)) != INVALID_SOCKET)
+	while ((newSocket = accept(s, (struct sockaddr *)&client, &c)) != INVALID_SOCKET)
 	{
 		printf("a new client requested a connection.\n");
-		message = "assigning a handler...\n";
-		send(new_socket, message.c_str(), message.size(), 0);
+		message = "assigning a handler ... ";
+		send(newSocket, message.c_str(), message.size(), 0);
 
-		hand_socket = (SOCKET *)malloc(sizeof(SOCKET));
-		*hand_socket = new_socket;
+		handSocket = (SOCKET *)malloc(sizeof(SOCKET));
+		*handSocket = newSocket;
 
-		connections.push_back(thread(connection_handler, hand_socket, client_num++));
-		connections.back().detach();
+		MyProtocol::connectionPush(handSocket, clientNum++);
 	}
 
-	if (new_socket == INVALID_SOCKET)
+	if (newSocket == INVALID_SOCKET)
 	{
 		printf("accept 실패. : %d", WSAGetLastError());
 		return 1;
@@ -102,68 +92,3 @@ int TCPIPThreadServer::run()
 	WSACleanup();
 	return 0;
 }
-
-void connection_handler(SOCKET* client, int client_id) {
-	thread::id thread_id = std::this_thread::get_id();
-	string send_msg, recv_msg = "";
-	char response[512];
-	int recv_size;
-
-	printf("Connection accepted. thread# %x, client_id#%d\n",thread_id, client_id);
-
-	send_msg = "Hello I'm your connection handler.\0";
-	send(*client, send_msg.c_str(), send_msg.size(), 0);
-
-	while ((recv_size = recv(*client, response, 512, 0)) != SOCKET_ERROR)
-	{
-		recv_msg.assign(response);
-		printf("client#%d: %s (%d byte(s))\n", client_id, recv_msg.c_str(), recv_size);
-
-		send_msg = MyProtocol(recv_msg);
-
-		send(*client, send_msg.c_str(), send_msg.size(), 0);
-	}
-
-	closesocket(*client);
-	free(client);
-	printf("client#%d disconnected.\n", client_id);
-}
-
-/*
-클라이언트로부터 받은 메세지를 분석해 보낼 메세지를 생성합니다.
-	recv_msg : 클라이언트로부터 받은 메세지
-	리턴값 : 클라이언트에게 보낼 메세지
-*/
-string MyProtocol(string recv_msg) {
-	vector<string> msg = split(recv_msg, '|');
-
-	if (msg.size() != 2)
-		return "wrong!";
-
-	return "yes!";
-}
-/*
-연습하는거니까 메세지 구조는 대충..
-seperator : |
-structure : msg_type | msg
-*/
-
-/*
-문자열을 특정 문자를 기준으로 분리합니다. Ref : https://www.fluentcpp.com/2017/04/21/how-to-split-a-string-in-c/
-	s : 문자열
-	delimiter : 특정 문자
-*/
-vector<string> split(const string& s, char delimiter) {
-	vector<string> tokens;
-	string token;
-	std::istringstream tokenStream(s);
-	while (std::getline(tokenStream, token, delimiter))
-	{
-		tokens.push_back(token);
-	}
-
-	return tokens;
-}
-/*
-string 표준 라이브러리는 만들어놨으면서 왜 split은 없지?
-*/

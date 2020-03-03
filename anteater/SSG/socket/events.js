@@ -3,13 +3,13 @@
 
 module.exports = function(client) {
     client.on('data', function(data) {
-        console.log(`${client.connName} 에게서 데이터가 옴 : ${data.toString()}`);
+        require('./index').msgQueue.push(data);
     });
     client.on('end', function() {
         console.log(`${client.connName} 커넥션 종료`);
     });
-    client.on('error', function(err) {
-        console.log(`에러 발생 : ${JSON.stringify(err)}`);
+    client.on('error', function(error) {
+        console.log(`에러 발생 : ${JSON.stringify(error)}`);
     });
     client.on('timeout', function() {
         console.log(`소켓 타임아웃`);
