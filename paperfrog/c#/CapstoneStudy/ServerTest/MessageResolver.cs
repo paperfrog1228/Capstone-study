@@ -1,5 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Text;
+
 /// <summary>
 /// tcp 통신에서 메세지 버퍼 읽어오는 클래스인데 나중에 기회되면 다시 내 손으로 짜볼것.
 /// </summary>
@@ -25,16 +27,17 @@ public class CMessageResolver
     {
         remainByte=transffered;
         int srcPos=offset;
-            bool completed=false;
+        bool completed=false;
         while (remainByte > 0)
         {
-            if (curPos < Defines.HEADERSIZE)
+            if (curPos <= Defines.HEADERSIZE)
             {
                 posToRead=Defines.HEADERSIZE;
                 completed=ReadUntil(buffer, ref srcPos, offset, transffered);
             }
 
-            if (!completed)
+        Console.WriteLine("수신 메세지:"+Encoding.Default.GetString(buffer).TrimEnd('\0'));
+            if (completed)
             {
                 return;
             }
@@ -67,6 +70,7 @@ public class CMessageResolver
 
     private bool ReadUntil(byte[] buffer,ref int  srcPos,int offset,int transffered)
     {
+        //Console.WriteLine("남은 바이트"+remainByte+"curPos "+curPos+" offset "+offset +" trans "+transffered +" all: "+offset+transffered);
         if (curPos >= offset + transffered)
             return false;
         int copySize=posToRead - curPos;
@@ -80,7 +84,7 @@ public class CMessageResolver
         remainByte-=copySize;
         if (curPos < posToRead)
             return false;
-        else return true;
+         return true;
 
     }
 }

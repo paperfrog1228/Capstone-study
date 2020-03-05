@@ -14,17 +14,11 @@ public class CListener
 
     public CListener()
     {
-        this.CallbackOnNewClientHandler=null;
+        CallbackOnNewClientHandler=null;
     }
-
-    void Test(object sender, EventArgs e)
-    {
-        Console.WriteLine("connect: "+sender+e);
-    }
-
     public void Start(string host, int port, int backlog)
     {
-        this.listenSocket=new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        listenSocket=new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         IPAddress address;
         if (host == "0.0.0.0")
             address=IPAddress.Any;
@@ -34,12 +28,9 @@ public class CListener
         IPEndPoint endPoint=new IPEndPoint(address, port);
         try
         {
-            this.listenSocket.Bind(endPoint);
-            this.listenSocket.Listen(backlog);
-            this.acceptArgs          = new SocketAsyncEventArgs();
-            this.acceptArgs.Completed+=new EventHandler<SocketAsyncEventArgs>(Test);
-            this.acceptArgs.Completed+=new EventHandler<SocketAsyncEventArgs>(OnAcceptCompleted);
-
+            listenSocket.Bind(endPoint);
+            listenSocket.Listen(backlog);
+            acceptArgs          = new SocketAsyncEventArgs();
 
             Thread listenThread=new Thread(DoListen);
             listenThread.Start();
@@ -49,17 +40,48 @@ public class CListener
             Console.WriteLine(e.Message);
         }
     }
+    void DoListen()
+    {
+        flowControlEvent=new AutoResetEvent(false);
+        
+        while (true)
+        { 
+            
+            acceptArgs          = new SocketAsyncEventArgs();
+            acceptArgs.Completed+=OnAcceptCompleted;
+                acceptArgs.AcceptSocket=null;
+                bool pending=true;
+                try
+                {
+                    pending=listenSocket.AcceptAsync(acceptArgs);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    //continue;
+                }
 
+                if(!pending)
+                {
+                    OnAcceptCompleted(null,acceptArgs);
+                }
+
+                this.flowControlEvent.WaitOne();
+        }
+    }
+    
     void OnAcceptCompleted(object sender, SocketAsyncEventArgs e)
     {
         if (e.SocketError == SocketError.Success)
         {
+            Console.WriteLine("연결 성공!");
             Socket clientSocket=e.AcceptSocket;
             this.flowControlEvent.Set();
-
-            if (this.CallbackOnNewClientHandler != null)
+        
+            Console.WriteLine("a"+e.UserToken);
+            if (CallbackOnNewClientHandler != null)
             {
-                this.CallbackOnNewClientHandler(clientSocket, e.UserToken);
+               CallbackOnNewClientHandler(clientSocket, e.UserToken);
             }
         }
         else
@@ -67,31 +89,4 @@ public class CListener
 
         flowControlEvent.Set();
     }
-
-    void DoListen()
-    {
-            this.flowControlEvent=new AutoResetEvent(false);
-            while (true)
-            {
-                this.acceptArgs.AcceptSocket=null;
-                bool pending=true;
-                try
-                {
-                    pending=listenSocket.AcceptAsync(this.acceptArgs);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    continue;
-                }
-
-                if(!pending)
-                {
-                    //
-                }
-
-                this.flowControlEvent.WaitOne();
-            }
-    }
-    
 }

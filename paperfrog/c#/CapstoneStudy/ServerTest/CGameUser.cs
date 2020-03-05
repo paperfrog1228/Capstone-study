@@ -1,4 +1,4 @@
-    public class CGameUser
-    {
+public class CGameUser
+{
         
-    }
+}
