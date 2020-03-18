@@ -16,9 +16,6 @@ public class TcpSocketManager : MonoBehaviour
     private byte[] sendBuff;
     void Start()
     {
-        socket=new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        var ep=new IPEndPoint(IPAddress.Parse("127.0.0.1"),999);
-        socket.Connect(ep);
         sendBuff=new byte[8192];
     }
 
@@ -28,11 +25,6 @@ public class TcpSocketManager : MonoBehaviour
         sendBuff=Encoding.Unicode.GetBytes(clientName);
         
         Debug.Log("send 누름"+sendBuff);
-        socket.BeginSend(sendBuff,0,sendBuff.Length,SocketFlags.None,cb,sendBuff);
     }
 
-    void Update()
-    {
-        
- }
 }

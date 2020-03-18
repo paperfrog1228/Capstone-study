@@ -9,6 +9,7 @@
       <e p="ServerTest" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="BufferManager.cs" t="Include" />
+        <e p="CGameRoom.cs" t="Include" />
         <e p="CGameUser.cs" t="Include" />
         <e p="CListener.cs" t="Include" />
         <e p="CNetworkService.cs" t="Include" />

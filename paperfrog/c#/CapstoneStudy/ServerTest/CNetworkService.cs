@@ -7,7 +7,6 @@ using System.Net.Sockets;
 public class CNetworkService
 {
     public CListener listener=new CListener();
-
     SocketAsyncEventArgsPool receiveEventArgsPool=new SocketAsyncEventArgsPool(100);
     SocketAsyncEventArgsPool sendEventArgsPool=new SocketAsyncEventArgsPool(100);
     private CUserToken userToken;

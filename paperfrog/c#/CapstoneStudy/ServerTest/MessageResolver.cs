@@ -9,6 +9,7 @@ public class CMessageResolver
 {
     public delegate void CompletedMessageCallback(byte[] buffer);
 
+    private CompletedMessageCallback callback;
     private int messageSize;
     byte[] messageBuffer=new byte[1024];
     int curPos;
@@ -23,6 +24,12 @@ public class CMessageResolver
         remainByte=0;
     }
 
+    public void PrintBuffer(byte[] buffer)
+    {
+        
+        
+    }
+
     public void OnReceive(byte[] buffer, int offset, int transffered)
     {
         remainByte=transffered;
@@ -35,10 +42,9 @@ public class CMessageResolver
                 posToRead=Defines.HEADERSIZE;
                 completed=ReadUntil(buffer, ref srcPos, offset, transffered);
             }
-
-        Console.WriteLine("수신 메세지:"+Encoding.Default.GetString(buffer).TrimEnd('\0'));
             if (completed)
             {
+                Console.WriteLine("수신 메세지12345" + Encoding.Default.GetString(buffer));
                 return;
             }
 
@@ -49,6 +55,8 @@ public class CMessageResolver
         completed=ReadUntil(buffer, ref srcPos, offset, transffered);
         if (completed)
         {
+            Console.WriteLine("수신 메세지"+buffer);
+            callback(buffer);
             ClearBuffer();
         }
     }
