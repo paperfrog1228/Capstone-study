@@ -1,5 +1,6 @@
 # Quickstart for Flask API Server
-(Ref. https://blog.thereis.xyz/94)
+(Ref 1. https://blog.thereis.xyz/94)
+(Ref 2. https://dejavuqa.tistory.com/273)
 
 ### 가상환경 진입 명령어
 git bash :
