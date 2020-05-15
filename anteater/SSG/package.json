@@ -1,0 +1,14 @@
+{
+  "name": "ssg",
+  "version": "1.0.0",
+  "description": "Super Simple Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anteater",
+  "license": "unlicensed",
+  "dependencies": {
+    "cli-color": "^2.0.0"
+  }
+}
