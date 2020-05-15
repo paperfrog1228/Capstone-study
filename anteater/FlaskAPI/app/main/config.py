@@ -11,14 +11,14 @@ class Config:
 class DevelopmentConfig(Config):            # 개발버전 설정
     DEBUG = True
     ## DB 정보들 ##
-    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'flask_boilerplate_main.db')
-	# SQLALCHEMY_TRACK_MODIFICATIONS = False
+    MONGO_URI = 'mongodb://127.0.0.1:27017/monallogDB'
 
 class TestingConfig(Config):                # 테스팅 설정
     DEBUG = True
     TESTING = True
     PRESERVE_CONTEXT_ON_EXCEPTION = False   # 예외 발생 시 컨텍스트 보존 여부
     ## DB 정보들 ##
+    MONGO_URI = 'mongodb://127.0.0.1:27017/monallogDB'
 
 class ProductionConfig(Config):             # 배포판 설정
     DEBUG = False

@@ -1,6 +1,4 @@
 # Quickstart for Flask API Server
-(Ref 1. https://blog.thereis.xyz/94)
-(Ref 2. https://dejavuqa.tistory.com/273)
 
 ### 가상환경 진입 명령어
 git bash :
@@ -19,3 +17,7 @@ cmd :
 .env\Scripts\deactivate.bat
 ```
 
+## References
+ 1. https://blog.thereis.xyz/94
+ 2. https://dejavuqa.tistory.com/273
+ 3. https://gist.github.com/fatiherikli/4350345 : Very simple MongoDB Model in Python
