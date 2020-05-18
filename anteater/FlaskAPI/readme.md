@@ -20,4 +20,5 @@ cmd :
 ## References
  1. https://blog.thereis.xyz/94
  2. https://dejavuqa.tistory.com/273
- 3. https://gist.github.com/fatiherikli/4350345 : Very simple MongoDB Model in Python
+ 3. https://pymongo.readthedocs.io/en/stable/tutorial.html : PyMongo documentation
+ 4. https://pymodm.readthedocs.io/en/stable/ : ORM for PyMongo

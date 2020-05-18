@@ -6,6 +6,7 @@ import unittest
 from flask_script import Manager                    # The Flask-Script extension provides support for writing external scripts in Flask.
 
 from app.main import create_app, mongo
+from app.main.model import user
 
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
 
@@ -15,7 +16,6 @@ manager = Manager(app)
 
 @manager.command
 def run():
-    print(mongo.db)
     app.run()
 
 @manager.command
