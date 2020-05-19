@@ -1,16 +1,13 @@
 from pymodm import fields, MongoModel
 from .. import mongo, flask_bcrypt
-from itertools import imap
 
-class User(Model):
+class User(MongoModel):
     __modelnname__ = "user"
 
-    collection = mongo.db['users']
-
-    userName = fields.CharField(required=true)
+    userName = fields.CharField(required=True)
     email = fields.EmailField()
     dateRegistered = fields.DateTimeField()
-    favorites = fields.ListField(field=fields.CharField)
+    favorites = fields.ListField(field=fields.CharField())
     # lines = fields.EmbeddedDocumentListField(line)    # Embedded 이렇게 하면 될듯
     userPassword_hash = fields.CharField()
 
@@ -26,4 +23,4 @@ class User(Model):
         return flask_bcrypt.check_userPassword_hash(self.userPassword_hash, userPassword)
 
     def __repr__(self):
-        ]return "<user '{}'".format(self.userName)
+        return "<user '{}'".format(self.userName)
