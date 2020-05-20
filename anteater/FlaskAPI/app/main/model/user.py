@@ -17,7 +17,7 @@ class User(MongoModel):
 
     @userPassword.setter
     def userPassword(self, userPassword):
-        self.userPassword_hash = flask_bcrypt.generate_userPassword_hash(userPassword).decode('utf-8')  # hashing userPassword
+        self.userPassword_hash = flask_bcrypt.generate_password_hash(userPassword).decode('utf-8')  # hashing userPassword
 
     def check_userPassword(self, userPassword):
         return flask_bcrypt.check_userPassword_hash(self.userPassword_hash, userPassword)
