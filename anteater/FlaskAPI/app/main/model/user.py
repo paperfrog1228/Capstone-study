@@ -1,8 +1,8 @@
 from pymodm import fields, MongoModel
-from .. import mongo, flask_bcrypt
+from app.main import flask_bcrypt
 
 class User(MongoModel):
-    __modelnname__ = "user"
+    __modelname__ = "user"
 
     userName = fields.CharField(required=True)
     email = fields.EmailField()
@@ -24,3 +24,6 @@ class User(MongoModel):
 
     def __repr__(self):
         return "<user '{}'".format(self.userName)
+
+    class Meta:
+        collection_name = 'users'   # 지정 안해주면 User collection을 따로 만들어버림
