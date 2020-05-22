@@ -30,7 +30,7 @@ class TestTestingConfig(TestCase):
         self.assertFalse(app.config['SECRET_KEY'] is 'FlaskAPI')
         self.assertTrue(app.config['DEBUG'])
         self.assertTrue(
-            app.config['MONGO_URI'] == 'mongodb://127.0.0.1:27017/monallogDB'
+            app.config['MONGO_URI'] == 'mongodb://127.0.0.1:27017/flaskAPITest'
         )
 
 class TestProductionConfig(TestCase):

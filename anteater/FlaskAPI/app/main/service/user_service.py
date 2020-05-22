@@ -27,7 +27,6 @@ def save_new_user(data):
         return response_object, 201     # 201 status : Created
 
 def get_all_users():
-    print(User.objects.all())
     return list(User.objects.all())
 
 def get_a_user(userName):
