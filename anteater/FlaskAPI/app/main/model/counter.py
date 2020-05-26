@@ -6,6 +6,7 @@ class Counter(MongoModel):
     Counter for auto-increment
     """
     id = fields.CharField()
+    reference_value = fields.MongoBaseField()
     seq = fields.IntegerField()
 
     @staticmethod
@@ -21,7 +22,8 @@ class Counter(MongoModel):
                 id=name,
                 seq=0
             ).save()
-            return getNextSequence(name)
+            return Counter.getNextSequence(name)
 
     class Meta:
         collection_name = 'counters'
+        final = True

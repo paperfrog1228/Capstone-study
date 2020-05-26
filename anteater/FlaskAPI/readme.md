@@ -17,9 +17,14 @@ cmd :
 .env\Scripts\deactivate.bat
 ```
 
-## Issues
- * flask-restplus is [unmaintained](https://github.com/noirbizarre/flask-restplus/issues/772#issuecomment-580001876).  
- flask-restx를 새로 배워야함.
+## APIs
+ * `GET /user`
+ * `POST /user`
+ * `GET /user/<userName>`
+ * `POST /auth/login`
+ * `POST /auth/logout`
+
+설명은 생략한다.
 
 ## References
  1. https://blog.thereis.xyz/94

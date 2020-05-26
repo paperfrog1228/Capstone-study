@@ -1,6 +1,7 @@
 from flask import request
 from flask_restx import Resource
 
+from ..util.decorator import token_required, admin_token_required
 from ..util.dto import UserDto
 from ..service.user_service import save_new_user, get_all_users, get_a_user
 
@@ -9,6 +10,7 @@ _user = UserDto.user
 
 @api.route('/')
 class UserList(Resource):
+    @token_required # GET /user 는 로그인 한 유저만 할 수 있도록
     @api.doc('list_of_registred_users')
     @api.marshal_list_with(_user, envelope='data')
     def get(self):
@@ -28,6 +30,7 @@ class UserList(Resource):
 @api.param('userName', 'The User name')
 @api.response(404, 'User not found.')
 class User(Resource):
+    @admin_token_required   # admin 유저만 할 수 있도록 (시험적으로 넣어봄)
     @api.doc('get a user')
     @api.marshal_list_with(_user)
     def get(self, userName):

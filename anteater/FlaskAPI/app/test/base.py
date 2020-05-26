@@ -1,7 +1,6 @@
 from flask_testing import TestCase
 from manage import app
-from pymodm import connect
-from pymodm import connection
+from pymodm import connect, connection
 
 class BaseTestCase(TestCase):
     """ Base Tests """
@@ -12,4 +11,6 @@ class BaseTestCase(TestCase):
         return app
 
     def tearDown(self):
-        connection._get_db()['users'].delete_many({})
+        collections = connection._get_db().collection_names()
+        for collection in collections:
+            connection._get_db()[collection].delete_many({})

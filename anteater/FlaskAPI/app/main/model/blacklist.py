@@ -14,6 +14,7 @@ class BlacklistToken(MongoModel):
     blacklisted_on = fields.DateTimeField(required=True)
 
     def __init__(self, token):
+        super().__init__()  # manually call parent's initializer.
         self.token = token
         self.blacklisted_on = datetime.datetime.now()
         self.id = Counter.getNextSequence('blacklistId')
@@ -32,4 +33,5 @@ class BlacklistToken(MongoModel):
             return True
 
     class Meta:
-        collection_name = 'blacklist_tokens'
+        collection_name = 'blacklistTokens'
+        final = True
