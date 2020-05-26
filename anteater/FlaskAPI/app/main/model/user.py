@@ -8,11 +8,12 @@ from ..config import key
 
 
 class User(MongoModel):
-    userId = fields.IntegerField(primary_key=True)
+    userId = fields.IntegerField(required=True)
     userName = fields.CharField(required=True)
     email = fields.EmailField()
     dateRegistered = fields.DateTimeField()
     favorites = fields.ListField(field=fields.CharField())
+    admin = fields.BooleanField(default=False)
     # lines = fields.EmbeddedDocumentListField(line)    # Embedded 이렇게 하면 될듯
     userPassword_hash = fields.CharField()
 
